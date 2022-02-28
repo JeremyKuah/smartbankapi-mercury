@@ -10,6 +10,7 @@ public interface RewardCatalogueService {
 	
 	List<RewardsCatalogue> getAll() throws RecordNotFoundException;
 	RewardsCatalogue getById(long id) throws RecordNotFoundException;
+	List<RewardsCatalogue> getFullCatalogue() throws RecordNotFoundException;
 	
 	String saveAllItems(List<RewardsCatalogue> items) throws RecordNotCreatedException;
 

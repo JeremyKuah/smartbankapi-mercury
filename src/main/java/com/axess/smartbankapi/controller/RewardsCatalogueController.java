@@ -24,6 +24,11 @@ public class RewardsCatalogueController {
 	@Autowired
 	private RewardCatalogueService rcService;
 	
+	@GetMapping("/cataloguesize")
+	public Integer getFullCatalogue() throws RecordNotFoundException {
+		return rcService.getFullCatalogue().size();
+	}
+	
 	@GetMapping("/")
 	public ResponseEntity<?> getAll() throws RecordNotFoundException {
 		
