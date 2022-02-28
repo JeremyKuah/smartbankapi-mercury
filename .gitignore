@@ -30,3 +30,9 @@ build/
 
 mvnw
 mvnw.cmd
+
+### Docker ###
+Dockerfile
+
+### Application Properties ###
+/src/main/resources/application.properties
