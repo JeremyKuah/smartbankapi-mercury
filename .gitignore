@@ -35,4 +35,4 @@ mvnw.cmd
 Dockerfile
 
 ### Application Properties ###
-/src/main/resources/application.properties
+/src/main/resources/
