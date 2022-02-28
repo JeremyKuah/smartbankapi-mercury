@@ -31,11 +31,10 @@ public class SmartBankApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
-		
 		LOGGER.info(this.userService.saveAllUsers(this.loadUsersData()));
-//		LOGGER.info(this.rcService.saveAllItems(this.loadCatalogueData()));
-
+		if (rcService.getFullCatalogue().size() == 0) {
+			LOGGER.info(this.rcService.saveAllItems(this.loadCatalogueData()));
+		}
 	}
 	
 	private List<RewardsCatalogue> loadCatalogueData() {

@@ -49,4 +49,9 @@ public class RewardCatalogueServiceImpl implements RewardCatalogueService {
 		}
 	}
 
+	@Override
+	public List<RewardsCatalogue> getFullCatalogue() throws RecordNotFoundException {
+		return this.rcRepo.findAll();
+	}
+
 }
