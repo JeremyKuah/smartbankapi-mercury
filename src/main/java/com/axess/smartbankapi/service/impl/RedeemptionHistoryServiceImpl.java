@@ -1,11 +1,5 @@
 package com.axess.smartbankapi.service.impl;
 
-import java.time.LocalDate;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.axess.smartbankapi.dto.UserRedeemptionHistoryDto;
 import com.axess.smartbankapi.exception.RecordExistException;
 import com.axess.smartbankapi.exception.RecordNotCreatedException;
@@ -15,6 +9,11 @@ import com.axess.smartbankapi.model.UserRedeemptionHistory;
 import com.axess.smartbankapi.repository.CCUserRepository;
 import com.axess.smartbankapi.repository.RedeemptionHistoryRepository;
 import com.axess.smartbankapi.service.RedeemptionHistoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class RedeemptionHistoryServiceImpl implements RedeemptionHistoryService {
@@ -31,7 +30,8 @@ public class RedeemptionHistoryServiceImpl implements RedeemptionHistoryService 
 		String message ="Item saved in history";
 		CCUser user = ccUserRepo.findById(historyDto.getCcNumber()).get();
 		user.setAvailableRedeemPoints(user.getAvailableRedeemPoints() - historyDto.getTotalPointsRedeemed());
-		user.setTotalRewardsGained(historyDto.getTotalAmountGained());
+
+		user.setTotalRewardsGained(historyDto.getTotalAmountGained() + user.getTotalRewardsGained());
 		ccUserRepo.save(user);
 		
 		historyDto.getItemsRedeemed().forEach(item ->{
